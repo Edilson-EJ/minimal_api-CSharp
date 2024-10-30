@@ -4,7 +4,7 @@ using minimal_api.Infraestrutura.Db;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Configuração do DbContext
+// Configuração do DbContext com MySQL
 var connectionString = builder.Configuration.GetConnectionString("mysql");
 builder.Services.AddDbContext<DbContexto>(options =>
 {
@@ -12,9 +12,6 @@ builder.Services.AddDbContext<DbContexto>(options =>
 });
 
 var app = builder.Build();
-
-// Rota GET padrão
-app.MapGet("/", () => "Hello World!");
 
 // Rota POST para login
 app.MapPost("/login", (LoginDTO loginDTO) =>
